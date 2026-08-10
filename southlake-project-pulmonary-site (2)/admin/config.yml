@@ -1,0 +1,30 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# After you connect this site to GitHub in Netlify, replace REPO_OWNER/REPO_NAME
+# below with your actual GitHub username/repo, e.g. aarushahluwalia/southlake-project-pulmonary
+# This line is informational only for git-gateway — git-gateway reads the repo
+# straight from your Netlify site's linked GitHub repo, so you usually don't
+# need to edit anything here. Leave as-is unless Netlify docs say otherwise.
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    label_singular: "Blog Post"
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Author"
+        name: "author"
+        widget: "select"
+        options: ["Agasthya Akella", "Arza Basnet", "Saarim Siddiqi", "Aarush Ahluwalia"]
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Cover Image", name: "image", widget: "image", required: false }
+      - { label: "Short Summary", name: "summary", widget: "text", required: false, hint: "One or two sentences shown in the blog preview." }
+      - { label: "Post Body", name: "body", widget: "markdown" }
